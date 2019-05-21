@@ -6,6 +6,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Arrays;
@@ -13,7 +14,7 @@ import java.util.Arrays;
 public class FSImpl extends UnicastRemoteObject implements FSInterface {
 
     private static final long serialVersionUID = 1L;
-    private static final String BASEPATH = "/home/paulo/Desktop/";
+    private static final String BASEPATH = "/home/11105929/DriveH";
 
     public FSImpl() throws RemoteException {
     }
@@ -85,13 +86,10 @@ public class FSImpl extends UnicastRemoteObject implements FSInterface {
 
     @Override
     public int write(byte[] data, String path) throws RemoteException {
-        PrintWriter writer;
         try {
-            writer = new PrintWriter(BASEPATH + path, "UTF-8");
-            writer.print(Arrays.toString(data));
-            writer.close();
+            Files.write(Paths.get(BASEPATH + path), data, StandardOpenOption.APPEND);
             return 1;
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return 0;
         }

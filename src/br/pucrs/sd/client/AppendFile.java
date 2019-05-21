@@ -14,7 +14,7 @@ public class AppendFile implements CommandInterface {
     @Override
     public void execute(String command, FSInterface fsInterface) throws RemoteException {
         String pathToCreate = PathUtils.getPathFrom(command);
-        byte[] content2 = command.split(" ")[2].getBytes(Charset.forName("UTF-8"));
+        byte[] content2 = command.split(";")[1].getBytes(Charset.forName("UTF-8"));
 
         if (fsInterface.write(content2, pathToCreate) == 1) {
             System.out.println("Conteudo adiconado com sucesso no arquivo: " + pathToCreate);
