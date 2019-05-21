@@ -5,7 +5,7 @@ import br.pucrs.sd.FSInterface;
 import java.nio.charset.Charset;
 import java.rmi.RemoteException;
 
-public class AppendFile implements CommandInterface {
+public class WriteFile implements CommandInterface {
     @Override
     public boolean verify(String command) {
         return command.startsWith("write");

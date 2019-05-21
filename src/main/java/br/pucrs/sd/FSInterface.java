@@ -15,7 +15,5 @@ public interface FSInterface extends Remote {
 
     public int write(byte[] data, String path) throws RemoteException;
 
-    public int append(byte[] data, String path) throws RemoteException;
-
     public byte[] read(String path) throws RemoteException;
 }

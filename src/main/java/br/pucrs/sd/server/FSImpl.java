@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class FSImpl extends UnicastRemoteObject implements FSInterface {
 
     private static final long serialVersionUID = 1L;
-    private static final String BASEPATH = "/home/paulo/Desktop/";
+    private static final String BASEPATH = "/home/11105929/DriveH";
 
     public FSImpl() throws RemoteException {
     }
@@ -95,20 +95,6 @@ public class FSImpl extends UnicastRemoteObject implements FSInterface {
             e.printStackTrace();
             return 0;
         }
-    }
-
-    @Override
-    public int append(byte[] data, String path) throws RemoteException {
-        try {
-            FileWriter fw = new FileWriter(BASEPATH + path, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(data.toString());
-            bw.newLine();
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return 0;
     }
 
     @Override

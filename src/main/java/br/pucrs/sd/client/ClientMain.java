@@ -17,7 +17,7 @@ public class ClientMain {
 
         ArrayList<CommandInterface> commands = new ArrayList<>(
                 Arrays.asList(
-                        new AppendFile(),
+                        new WriteFile(),
                         new CreateBlankFile(),
                         new CreateDirectory(),
                         new ListFiles(),
@@ -67,5 +67,8 @@ public class ClientMain {
         System.out.println("mkdir  -> Criar diretorio Ex: mkdir teste");
         System.out.println("create -> Criar arquivos Ex: create ./arquivo.txt");
         System.out.println("unlink -> Remove arquivos Ex: create ./arquivo.txt");
+        System.out.println("write -> Escreve no arquivo Ex: write ./arquivo.txt ; conteudo do arquivo");
+        System.out.println("read -> Le conteudo do arquivo Ex: read ./arquivo.txt");
+
     }
 }
