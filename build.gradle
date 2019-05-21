@@ -1,0 +1,32 @@
+group 'rmi-Server-Client'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+task serverFatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'br.pucrs.sd.server.ServerMain'
+    }
+    baseName = 'server-jar'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+task clientFatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'br.pucrs.sd.client.ClientMain'
+    }
+    baseName = 'client-jar'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
